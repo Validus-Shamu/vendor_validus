@@ -147,6 +147,12 @@ PRODUCT_COPY_FILES += \
 endif
 endif
 
+# SuperSU
+PRODUCT_COPY_FILES += \
+	vendor/tipsy/prebuilt/common/UPDATE-SuperSU.zip:system/addon.d/UPDATE-SuperSU.zip \
+	vendor/tipsy/prebuilt/common/etc/init.d/99SuperSUDaemon:system/etc/init.d/99SuperSUDaemon
+
+
 # Versioning System
 PRODUCT_VERSION_MAJOR = 6.0.1
 PRODUCT_VERSION_MINOR = alpha
