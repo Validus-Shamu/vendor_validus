@@ -82,6 +82,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     LatinIME \
     BluetoothExt
+    LockClock \
 
 # Extra tools
 PRODUCT_PACKAGES += \
