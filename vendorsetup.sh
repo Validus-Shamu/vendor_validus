@@ -1,3 +1,3 @@
-. "$(gettop)/vendor/aospb/build/envsetup.sh"
+. "$(gettop)/vendor/validus/build/envsetup.sh"
 
-aospb_device_combos
+validus_device_combos

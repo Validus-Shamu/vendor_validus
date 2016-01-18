@@ -26,25 +26,25 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Backup Tool
 PRODUCT_COPY_FILES += \
-    vendor/aospb/prebuilt/common/bin/backuptool.sh:install/bin/backuptool.sh \
-    vendor/aospb/prebuilt/common/bin/backuptool.functions:install/bin/backuptool.functions \
-    vendor/aospb/prebuilt/common/bin/50-aospb.sh:system/addon.d/50-aospb.sh
+    vendor/validus/prebuilt/common/bin/backuptool.sh:install/bin/backuptool.sh \
+    vendor/validus/prebuilt/common/bin/backuptool.functions:install/bin/backuptool.functions \
+    vendor/validus/prebuilt/common/bin/50-validus.sh:system/addon.d/50-validus.sh
 
 # Signature compatibility validation
 PRODUCT_COPY_FILES += \
-    vendor/aospb/prebuilt/common/bin/otasigcheck.sh:install/bin/otasigcheck.sh
+    vendor/validus/prebuilt/common/bin/otasigcheck.sh:install/bin/otasigcheck.sh
 
-# AOSPB-specific init file
+# Validus-specific init file
 PRODUCT_COPY_FILES += \
-    vendor/aospb/prebuilt/common/etc/init.local.rc:root/init.aospb.rc
+    vendor/validus/prebuilt/common/etc/init.local.rc:root/init.validus.rc
 
 # Copy latinime for gesture typing
 PRODUCT_COPY_FILES += \
-    vendor/aospb/prebuilt/common/lib/libjni_latinimegoogle.so:system/lib/libjni_latinimegoogle.so
+    vendor/validus/prebuilt/common/lib/libjni_latinimegoogle.so:system/lib/libjni_latinimegoogle.so
 
 # SELinux filesystem labels
 PRODUCT_COPY_FILES += \
-    vendor/aospb/prebuilt/common/etc/init.d/50selinuxrelabel:system/etc/init.d/50selinuxrelabel
+    vendor/validus/prebuilt/common/etc/init.d/50selinuxrelabel:system/etc/init.d/50selinuxrelabel
 
 # Enable SIP+VoIP on all targets
 PRODUCT_COPY_FILES += \
@@ -52,13 +52,13 @@ PRODUCT_COPY_FILES += \
 
 # Don't export PS1 in /system/etc/mkshrc.
 PRODUCT_COPY_FILES += \
-    vendor/aospb/prebuilt/common/etc/mkshrc:system/etc/mkshrc \
-    vendor/aospb/prebuilt/common/etc/sysctl.conf:system/etc/sysctl.conf
+    vendor/validus/prebuilt/common/etc/mkshrc:system/etc/mkshrc \
+    vendor/validus/prebuilt/common/etc/sysctl.conf:system/etc/sysctl.conf
 
 PRODUCT_COPY_FILES += \
-    vendor/aospb/prebuilt/common/etc/init.d/00banner:system/etc/init.d/00banner \
-    vendor/aospb/prebuilt/common/etc/init.d/90userinit:system/etc/init.d/90userinit \
-    vendor/aospb/prebuilt/common/bin/sysinit:system/bin/sysinit
+    vendor/validus/prebuilt/common/etc/init.d/00banner:system/etc/init.d/00banner \
+    vendor/validus/prebuilt/common/etc/init.d/90userinit:system/etc/init.d/90userinit \
+    vendor/validus/prebuilt/common/bin/sysinit:system/bin/sysinit
 
 # Required packages
 PRODUCT_PACKAGES += \
@@ -108,7 +108,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # easy way to extend to add more packages
 -include vendor/extra/product.mk
 
-PRODUCT_PACKAGE_OVERLAYS += vendor/aospb/overlay/common
+PRODUCT_PACKAGE_OVERLAYS += vendor/validus/overlay/common
 
 # Boot animation include
 ifneq ($(TARGET_SCREEN_WIDTH) $(TARGET_SCREEN_HEIGHT),$(space))
@@ -122,7 +122,7 @@ TARGET_BOOTANIMATION_SIZE := $(shell \
   fi )
 
 # get a sorted list of the sizes
-bootanimation_sizes := $(subst .zip,, $(shell ls vendor/aospb/prebuilt/common/bootanimation))
+bootanimation_sizes := $(subst .zip,, $(shell ls vendor/validus/prebuilt/common/bootanimation))
 bootanimation_sizes := $(shell echo -e $(subst $(space),'\n',$(bootanimation_sizes)) | sort -rn)
 
 # find the appropriate size and set
@@ -140,44 +140,44 @@ $(foreach size,$(bootanimation_sizes), $(call check_and_set_bootanimation,$(size
 
 ifeq ($(TARGET_BOOTANIMATION_HALF_RES),true)
 PRODUCT_COPY_FILES += \
-    vendor/aospb/prebuilt/common/bootanimation/halfres/$(TARGET_BOOTANIMATION_NAME).zip:system/media/bootanimation.zip
+    vendor/validus/prebuilt/common/bootanimation/halfres/$(TARGET_BOOTANIMATION_NAME).zip:system/media/bootanimation.zip
 else
 PRODUCT_COPY_FILES += \
-    vendor/aospb/prebuilt/common/bootanimation/$(TARGET_BOOTANIMATION_NAME).zip:system/media/bootanimation.zip
+    vendor/validus/prebuilt/common/bootanimation/$(TARGET_BOOTANIMATION_NAME).zip:system/media/bootanimation.zip
 endif
 endif
 
 # Versioning System
 PRODUCT_VERSION_MAJOR = 6.0.1
 PRODUCT_VERSION_MINOR = alpha
-PRODUCT_VERSION_MAINTENANCE = 0.1
-ifdef AOSPB_BUILD_EXTRA
-    AOSPB_POSTFIX := -$(AOSPB_BUILD_EXTRA)
+PRODUCT_VERSION_MAINTENANCE = 9.0
+ifdef VALIDUS_BUILD_EXTRA
+    VALIDUS_POSTFIX := -$(VALIDUS_BUILD_EXTRA)
 endif
-ifndef AOSPB_BUILD_TYPE
-    AOSPB_BUILD_TYPE := UNOFFICIAL
+ifndef VALIDUS_BUILD_TYPE
+    VALIDUS_BUILD_TYPE := UNOFFICIAL
     PLATFORM_VERSION_CODENAME := UNOFFICIAL
 endif
 
-ifeq ($(AOSPB_BUILD_TYPE),DM)
-    AOSPB_POSTFIX := -$(shell date +"%Y%m%d")
+ifeq ($(VALIDUS_BUILD_TYPE),DM)
+    VALIDUS_POSTFIX := -$(shell date +"%Y%m%d")
 endif
 
-ifndef AOSPB_POSTFIX
-    AOSPB_POSTFIX := -$(shell date +"%Y%m%d-%H%M")
+ifndef VALIDUS_POSTFIX
+    VALIDUS_POSTFIX := -$(shell date +"%Y%m%d-%H%M")
 endif
 
-PLATFORM_VERSION_CODENAME := $(AOSPB_BUILD_TYPE)
+PLATFORM_VERSION_CODENAME := $(VALIDUS_BUILD_TYPE)
 
 # Set all versions
-AOSPB_VERSION := AOSPB-$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE)-$(AOSPB_BUILD_TYPE)$(AOSPB_POSTFIX)
-AOSPB_MOD_VERSION := AOSPB-$(AOSPB_BUILD)-$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE)-$(AOSPB_BUILD_TYPE)$(AOSPB_POSTFIX)
+VALIDUS_VERSION := VALIDUS-$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE)-$(VALIDUS_BUILD_TYPE)$(VALIDUS_POSTFIX)
+VALIDUS_MOD_VERSION := VALIDUS-$(VALIDUS_BUILD)-$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE)-$(VALIDUS_BUILD_TYPE)$(VALIDUS_POSTFIX)
 
 PRODUCT_PROPERTY_OVERRIDES += \
     BUILD_DISPLAY_ID=$(BUILD_ID) \
-    ro.aospb.version=$(AOSPB_VERSION) \
-    ro.modversion=$(AOSPB_MOD_VERSION) \
-    ro.aospb.buildtype=$(AOSPB_BUILD_TYPE)
+    ro.validus.version=$(VALIDUS_VERSION) \
+    ro.modversion=$(VALIDUS_MOD_VERSION) \
+    ro.validus.buildtype=$(VALIDUS_BUILD_TYPE)
 
-EXTENDED_POST_PROCESS_PROPS := vendor/aospb/tools/process_props.py
+EXTENDED_POST_PROCESS_PROPS := vendor/validus/tools/process_props.py
 

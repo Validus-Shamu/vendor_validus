@@ -1,8 +1,8 @@
 #
 # This policy configuration will be used by all products that
-# inherit from CM
+# inherit from Validus
 #
 
 BOARD_SEPOLICY_DIRS += \
-    vendor/aospb/sepolicy
+    vendor/validus/sepolicy
 
