@@ -161,6 +161,8 @@ vendor/validus/prebuilt/common/app/Nova33.apk:system/app/Nova33.apk
 PRODUCT_COPY_FILES += \
 vendor/validus/prebuilt/common/app/adaway.apk:system/app/adaway.apk
 
+# Themes
+include vendor/validus/config/themes_common.mk
 
 # Versioning System
 PRODUCT_VERSION_MAJOR = 6.0.1
