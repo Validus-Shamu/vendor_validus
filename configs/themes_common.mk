@@ -1,7 +1,9 @@
 # Theme engine
 PRODUCT_PACKAGES += \
+    aapt \
     ThemeChooser \
-    ThemesProvider
+    ThemesProvider \
+    tm
 
 PRODUCT_COPY_FILES += \
     vendor/validus/prebuilt/etc/permissions/org.cyanogenmod.theme.xml:system/etc/permissions/org.cyanogenmod.theme.xml \
