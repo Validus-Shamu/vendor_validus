@@ -24,6 +24,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.debug.alloc=0
 
+# Busybox
+PRODUCT_PACKAGES += \
+    Busybox
+
 # Backup Tool
 PRODUCT_COPY_FILES += \
     vendor/validus/prebuilt/common/bin/backuptool.sh:install/bin/backuptool.sh \
