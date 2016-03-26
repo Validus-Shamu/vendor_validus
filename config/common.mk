@@ -87,7 +87,8 @@ PRODUCT_PACKAGES += \
     LatinIME \
     BluetoothExt \
     LockClock \
-    OmniSwitch
+    OmniSwitch \
+    OmniJaws    
 
 # Extra tools
 PRODUCT_PACKAGES += \
