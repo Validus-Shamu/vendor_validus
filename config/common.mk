@@ -28,6 +28,14 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PACKAGES += \
     Busybox
 
+# DU Utils Library
+PRODUCT_PACKAGES += \
+    org.dirtyunicorns.utils
+
+PRODUCT_BOOT_JARS += \
+    org.dirtyunicorns.utils
+
+
 # Backup Tool
 PRODUCT_COPY_FILES += \
     vendor/validus/prebuilt/common/bin/backuptool.sh:install/bin/backuptool.sh \
