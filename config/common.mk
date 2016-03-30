@@ -185,6 +185,9 @@ vendor/validus/prebuilt/common/app/adaway.apk:system/app/adaway.apk
 # Themes
 include vendor/validus/config/themes_common.mk
 
+#DragonTC
+-include vendor/validus/config/dtc.mk
+
 # Versioning System
 PRODUCT_VERSION_MAJOR = 6.0.1
 PRODUCT_VERSION_MINOR = alpha
