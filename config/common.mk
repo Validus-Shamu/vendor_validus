@@ -192,9 +192,8 @@ include vendor/validus/config/themes_common.mk
 PRODUCT_VERSION_MAJOR = 6.0.1
 PRODUCT_VERSION_MINOR = alpha
 PRODUCT_VERSION_MAINTENANCE = 9.0
-ifdef VALIDUS_BUILD_EXTRA
-    VALIDUS_POSTFIX := -$(VALIDUS_BUILD_EXTRA)
-endif
+VALIDUS_POSTFIX := -$(shell date +"%Y%m%d")
+
 ifndef VALIDUS_BUILD_TYPE
     VALIDUS_BUILD_TYPE := Unofficial
     VALIDUS_POSTFIX := -$(shell date +"%Y%m%d")
