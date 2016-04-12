@@ -94,6 +94,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     LatinIME \
     BluetoothExt \
+    SlimOTA \
     LockClock \
     OmniJaws \
     OmniStyle    
