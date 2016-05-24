@@ -97,7 +97,8 @@ PRODUCT_PACKAGES += \
     SlimOTA \
     LockClock \
     OmniJaws \
-    OmniStyle    
+    OmniStyle  \
+    KernelAdiutor  
 
 # Extra tools
 PRODUCT_PACKAGES += \
