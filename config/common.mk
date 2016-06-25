@@ -199,7 +199,7 @@ include vendor/validus/config/themes_common.mk
 # Versioning System
 PRODUCT_VERSION_MAJOR = 6.0.1
 PRODUCT_VERSION_MINOR = RC1
-PRODUCT_VERSION_MAINTENANCE = 9.3
+PRODUCT_VERSION_MAINTENANCE = 9.4
 VALIDUS_POSTFIX := -$(shell date +"%Y%m%d")
 
 ifndef VALIDUS_BUILD_TYPE
