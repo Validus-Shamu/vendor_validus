@@ -35,7 +35,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_BOOT_JARS += \
     org.dirtyunicorns.utils
 
-
 # Backup Tool
 PRODUCT_COPY_FILES += \
     vendor/validus/prebuilt/common/bin/backuptool.sh:install/bin/backuptool.sh \
@@ -57,6 +56,10 @@ PRODUCT_COPY_FILES += \
 # SELinux filesystem labels
 PRODUCT_COPY_FILES += \
     vendor/validus/prebuilt/common/etc/init.d/50selinuxrelabel:system/etc/init.d/50selinuxrelabel
+
+# Backup Services whitelist
+PRODUCT_COPY_FILES += \
+    vendor/validus/config/permissions/backup.xml:system/etc/sysconfig/backup.xml
 
 # Enable SIP+VoIP on all targets
 PRODUCT_COPY_FILES += \
